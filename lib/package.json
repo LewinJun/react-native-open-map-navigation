@@ -1,0 +1,48 @@
+{
+    "name": "react-native-open-map-navigation",
+    "version": "1.0.0",
+    "description": "打开App自带的地图导航",
+    "main": "index.ts",
+    "nativePackage": true,
+    "scripts": {
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/LewinJun/react-native-open-map-navigation.git"
+    },
+    "keywords": [
+      "map",
+      "react-native-map",
+      "地图",
+      "react",
+      "导航",
+      "native"
+    ],
+    "author": "lewin",
+    "license": "ISC",
+    "peerDependencies": {
+        "react-native": ">0.60.0",
+        "react": "17.0.1"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.14.8",
+      "@babel/runtime": "^7.14.8",
+      "babel-jest": "^27.0.6",
+      "eslint": "^7.32.0",
+      "jest": "^27.0.6",
+      "metro-react-native-babel-preset": "^0.66.2",
+      "react-test-renderer": "17.0.1",
+      "@types/react": "^17.0.3",
+      "@types/react-native": "^0.64.12",
+      "react": "17.0.2",
+      "react-native": "0.64.2",
+      "@typescript-eslint/eslint-plugin": "^4.17.0",
+      "@typescript-eslint/parser": "^4.17.0",
+      "eslint-plugin-typescript": "^0.14.0",
+      "typescript": "^4.2.3"
+    },
+    "bugs": {
+      "url": "https://github.com/LewinJun/react-native-open-map-navigation/issues"
+    },
+    "homepage": "https://github.com/LewinJun/react-native-open-map-navigation#readme"
+  }
