@@ -5374,7 +5374,7 @@ prompts@^2.0.1, prompts@^2.4.0:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.7.2:
+prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "http://verdaccio.doctopia.com.cn/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha1-UsQedbjIfnK52TYOAga5ncv/psU=
@@ -5438,8 +5438,29 @@ react-native-codegen@^0.0.6:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
+react-native-general-actionsheet@^1.0.4:
+  version "1.0.4"
+  resolved "http://verdaccio.doctopia.com.cn/react-native-general-actionsheet/-/react-native-general-actionsheet-1.0.4.tgz#d9fb8ee8b1001a30b90e7b507bf8c0d3e878e403"
+  integrity sha1-2fuO6LEAGjC5DntQe/jA0+h45AM=
+  dependencies:
+    react-native-root-siblings "^3.1.6"
+    react-native-safe-area-utility "^1.0.0"
+
 react-native-open-map-navigation@../lib:
   version "1.0.0"
+
+react-native-root-siblings@^3.1.6:
+  version "3.2.3"
+  resolved "http://verdaccio.doctopia.com.cn/react-native-root-siblings/-/react-native-root-siblings-3.2.3.tgz#df5a1cff3a3a1f433f57320e1cae719f1b15a3f2"
+  integrity sha1-31oc/zo6H0M/VzIOHK5xnxsVo/I=
+  dependencies:
+    prop-types "^15.6.2"
+    static-container "^1.0.0"
+
+react-native-safe-area-utility@^1.0.0:
+  version "1.0.0"
+  resolved "http://verdaccio.doctopia.com.cn/react-native-safe-area-utility/-/react-native-safe-area-utility-1.0.0.tgz#1dc289145f67d65ff70cb57b3aa8898e2d588438"
+  integrity sha1-HcKJFF9n1l/3DLV7OqiJji1YhDg=
 
 react-native@0.64.2:
   version "0.64.2"
@@ -6071,6 +6092,11 @@ stacktrace-parser@^0.1.3:
   integrity sha1-KfsMrk4NC4UVWHlAKFehY562BRo=
   dependencies:
     type-fest "^0.7.1"
+
+static-container@^1.0.0:
+  version "1.7.1"
+  resolved "http://verdaccio.doctopia.com.cn/static-container/-/static-container-1.7.1.tgz#2391d137255f1cd5db47ab3970c4aa277031dedf"
+  integrity sha1-I5HRNyVfHNXbR6s5cMSqJ3Ax3t8=
 
 static-extend@^0.1.1:
   version "0.1.2"
