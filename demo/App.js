@@ -20,7 +20,7 @@ import {
   View,
 } from 'react-native';
 
-import OpenMapNavigation from 'react-native-open-map-navigation'
+import OpenMapNavigation from './native'
 
 import {
   Colors,
@@ -74,11 +74,7 @@ const App: () => Node = () => {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
           <TouchableOpacity style={styles.btn} onPress={() => {
-            OpenMapNavigation.mapNavigation(39.23784, 38.784735).then(res => {
-              console.log(res)
-            }).catch(e => {
-              console.log(e)
-            })
+            OpenMapNavigation.openMap(39.23784, 38.784735)
           }}>
             <Text style={{ color: 'white' }}>打开自带地图</Text>
           </TouchableOpacity>
