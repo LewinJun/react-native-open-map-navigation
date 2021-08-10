@@ -13,7 +13,7 @@
 @implementation RNOpenMapNavigation
 RCT_EXPORT_MODULE();
 
-RCT_EXPORT_METHOD(openMapNavigation:(double)latitude longitude:(double)longitude success:(RCTPromiseResolveBlock)success failure:(RCTResponseErrorBlock)failure){
+RCT_EXPORT_METHOD(getMapRouterApp:(double)latitude longitude:(double)longitude success:(RCTPromiseResolveBlock)success failure:(RCTResponseErrorBlock)failure){
   dispatch_sync(dispatch_get_main_queue(), ^{
       CLLocationCoordinate2D location = CLLocationCoordinate2DMake(latitude, longitude);
       success([self getInstalledMapAppWithEndLocation: location]);

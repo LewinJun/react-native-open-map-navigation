@@ -74,7 +74,7 @@ const App: () => Node = () => {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
           <TouchableOpacity style={styles.btn} onPress={() => {
-            OpenMapNavigation.openMap(39.23784, 38.784735)
+            OpenMapNavigation.openMapActionSheet(39.23784, 38.784735)
           }}>
             <Text style={{ color: 'white' }}>打开自带地图</Text>
           </TouchableOpacity>
