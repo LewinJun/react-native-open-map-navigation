@@ -1,10 +1,11 @@
 {
     "name": "react-native-open-map-navigation",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "打开App自带的地图导航",
     "main": "index.ts",
     "nativePackage": true,
     "scripts": {
+      "prepare": "cp ../README.md README.md"
     },
     "repository": {
       "type": "git",
@@ -45,6 +46,7 @@
     "files": [
       "index.ts",
       "ios/",
+      "README.md",
       "android/src",
       "android/build.gradle",
       "react-native-open-map-navigation.podspec"
@@ -53,7 +55,7 @@
       "url": "https://github.com/LewinJun/react-native-open-map-navigation/issues"
     },
     "publishConfig": {
-      "registry": "https://registry.npmjs.org"
+      "registry": "https://registry.npmjs.org/"
     },
     "homepage": "https://github.com/LewinJun/react-native-open-map-navigation#readme"
   }
