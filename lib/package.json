@@ -42,6 +42,13 @@
       "eslint-plugin-typescript": "^0.14.0",
       "typescript": "^4.2.3"
     },
+    "files": [
+      "index.ts",
+      "ios/",
+      "android/src",
+      "android/build.gradle",
+      "react-native-open-map-navigation.podspec"
+    ],
     "bugs": {
       "url": "https://github.com/LewinJun/react-native-open-map-navigation/issues"
     },
