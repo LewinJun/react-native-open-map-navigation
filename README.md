@@ -10,6 +10,18 @@
 ### 1: yarn add 或者npm install
 `yarn add react-native-open-map-navigation  `
 
+### 2: iOS需要配置url scheme白名单，iOS工程Info.plist添加如下配置
+```xml
+<key>LSApplicationQueriesSchemes</key>
+<array>
+	<string>baidumap</string>
+	<string>iosamap</string>
+	<string>comgooglemaps</string>
+	<string>qqmap</string>
+</array>
+```
+
+
 
 ## Usage
 ### NOTE: 可以参考Example的App.js中的方法
