@@ -87,9 +87,29 @@ const _openMapRouter = (item: IMapItem) => {
     return Linking.openURL(item.url)
 }
 
+const _appAndroidPackageInstalled = (packageName: string) => {
+    const openMap = NativeModules.RNOpenMapNavigation
+    return new Promise<boolean>((resolve, reject) => {
+        if (Platform.OS === 'ios') {
+            reject({ code: 500, msg: "ios 不支持此方法" })
+            return
+        }
+        if (openMap) {
+            openMap.appPackageInstalled(packageName).then(res => {
+                resolve(res)
+            }).catch(e => {
+                reject(e)
+            })
+        } else {
+            reject({ code: 404 })
+        }
+    })
+}
+
 export default {
     getMapRouterApp: _getMapRouterApp,
     openMapIOS: _openMapIOS,
     openMapActionSheet: _openMapActionSheet,
-    openMapRouter: _openMapRouter
+    openMapRouter: _openMapRouter,
+    appAndroidPackageInstalled: _appAndroidPackageInstalled
 }
