@@ -12,6 +12,8 @@ target 'Example' do
     :hermes_enabled => false
   )
 
+  pod 'react-native-open-map-navigation', :path => '../node_modules/react-native-open-map-navigation'
+
   target 'ExampleTests' do
     inherit! :complete
     # Pods for testing
