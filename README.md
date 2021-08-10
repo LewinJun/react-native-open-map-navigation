@@ -1,6 +1,9 @@
 # react-native-open-map-navigation
 地图导航,打开手机自带的地图导航App，打开iOS系统自带的地图
 
+## 如下图
+![image](https://github.com/LewinJun/react-native-lewin-scaffold/blob/master/fast.gif)
+
 
 ## Table of contents
 - [Install](#install)
