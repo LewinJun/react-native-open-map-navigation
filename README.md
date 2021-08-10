@@ -1,5 +1,5 @@
 # react-native-open-map-navigation
-地图导航,打开手机自带的地图导航App
+地图导航,打开手机自带的地图导航App，打开iOS系统自带的地图
 
 
 ## Table of contents
