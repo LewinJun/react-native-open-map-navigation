@@ -32,11 +32,11 @@ public class RNOpenMapNavigation extends ReactContextBaseJavaModule {
 
     //getMapRouterApp
     @ReactMethod
-    public void getMapRouterApp(double latitude, double longitude,Promise promise) {
+    public void getMapRouterApp(String latitude, String longitude, String address,Promise promise) {
         try {
             HashMap<String, Object> map = new HashMap<>();
             map.put("code", 200);
-            map.put("mapItems",getInstalledMapAppWithEndLocation(latitude, longitude));
+            map.put("mapItems",getInstalledMapAppWithEndLocation(latitude, longitude, address));
             promise.resolve(map);
         }catch (Exception e) {
             promise.reject(e);
@@ -52,8 +52,12 @@ public class RNOpenMapNavigation extends ReactContextBaseJavaModule {
         }
     }
 
-    public List<WritableMap> getInstalledMapAppWithEndLocation(double latitude, double longitude) {
+    public List<WritableMap> getInstalledMapAppWithEndLocation(String latitude, String longitude, String address) {
         List<WritableMap> writableMapList = new ArrayList<>();
+        String toName = address;
+        if (TextUtils.isEmpty(toName)) {
+            toName = "已选择的位置";
+        }
 
         if (isInstalled(this.getReactApplicationContext(), GAODE_MAP)) {
             StringBuffer stringBuffer = new StringBuffer("androidamap://route/plan?sourceApplication=").append("openMap");
@@ -74,6 +78,7 @@ public class RNOpenMapNavigation extends ReactContextBaseJavaModule {
 //        }
             stringBuffer.append("&dlat=").append(latitude);
             stringBuffer.append("&dlon=").append(longitude);
+            stringBuffer.append("&dname=").append(toName);
 //        stringBuffer.append("&dName=").append(dName);
 //        stringBuffer.append("&dev=").append(dev);
 //        stringBuffer.append("&t=").append(t);
@@ -86,7 +91,7 @@ public class RNOpenMapNavigation extends ReactContextBaseJavaModule {
             // 百度地图
             StringBuffer sb = new StringBuffer("baidumap://map/direction?mode=").append("driving");
             sb.append("&origin={{我的位置}}");
-            sb.append("&destination=latlng:" + latitude + "," + longitude + "|name=北京&coord_type=gcj02");
+            sb.append("&destination=latlng:" + latitude + "," + longitude + "|name:"+toName+"&coord_type=gcj02");
             WritableMap baiduMap = Arguments.createMap();
             baiduMap.putString("title", "百度地图");
             baiduMap.putString("url", sb.toString());
@@ -94,7 +99,7 @@ public class RNOpenMapNavigation extends ReactContextBaseJavaModule {
         }
         if (isInstalled(this.getReactApplicationContext(), TENXUN_MAP)) {
             // 腾讯地图
-            StringBuffer qq = new StringBuffer("qqmap://map/routeplan?type=drive&from=我的位置&to=终点&coord_type=1&policy=0");
+            StringBuffer qq = new StringBuffer("qqmap://map/routeplan?type=drive&from=我的位置&to="+toName+"&coord_type=1&policy=0");
             qq.append("&tocoord=" + latitude + "," + longitude);
             WritableMap qqMap = Arguments.createMap();
             qqMap.putString("title", "腾讯地图");

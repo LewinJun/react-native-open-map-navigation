@@ -5446,8 +5446,10 @@ react-native-general-actionsheet@^1.0.4:
     react-native-root-siblings "^3.1.6"
     react-native-safe-area-utility "^1.0.0"
 
-react-native-open-map-navigation@../lib:
-  version "1.0.0"
+react-native-open-map-navigation@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/react-native-open-map-navigation/-/react-native-open-map-navigation-1.0.2.tgz#e69f67ad738c0280daf506061c9ad963c12ea96f"
+  integrity sha512-P8XNdrdK+qFD7cbsD1mVpnnfFuf1+UvXFeVO4l1DWI3yIEZF1jt8NUptclWLOTqqbd4XtneoJgHIbw+M9/y9VQ==
 
 react-native-root-siblings@^3.1.6:
   version "3.2.3"

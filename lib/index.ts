@@ -15,6 +15,7 @@ interface IMapItem {
 interface IMapRouter {
     latitude?: number;
     longitude?: number;
+    address?: string;
     name?: string;
     startName?: string; // 我的位置
     startLatitude?: number;
@@ -26,13 +27,13 @@ const mapConfig: IMapRouter = {
 }
 
 // 自定义UI可以用这个，选择了一个app调用openMapRouter
-const _getMapRouterApp = (latitude: number, longitude: number) => {
+const _getMapRouterApp = (longitude: number, latitude: number, address: string) => {
     mapConfig.latitude = latitude
     mapConfig.longitude = longitude
     const openMap = NativeModules.RNOpenMapNavigation
     return new Promise<IResult>((resolve, reject) => {
         if (openMap) {
-            openMap.getMapRouterApp(latitude, longitude).then(res => {
+            openMap.getMapRouterApp(longitude, latitude, address).then(res => {
                 resolve(res)
             }).catch(e => {
                 reject(e)
@@ -44,11 +45,11 @@ const _getMapRouterApp = (latitude: number, longitude: number) => {
 }
 
 // 仅仅只是打开苹果地图方法
-const _openMapIOS = (latitude: number, longitude: number) => {
+const _openMapIOS = (longitude: number, latitude: number, address: string) => {
     const openMap = NativeModules.RNOpenMapNavigation
     return new Promise<IResult>((resolve, reject) => {
         if (openMap) {
-            openMap.openIOSMapNavigation(latitude, longitude).then(res => {
+            openMap.openIOSMapNavigation(longitude, latitude, address).then(res => {
                 resolve(res)
             }).catch(e => {
                 reject(e)
@@ -59,19 +60,17 @@ const _openMapIOS = (latitude: number, longitude: number) => {
     })
 }
 
-const _openMapActionSheet = (latitude: number, longitude: number) => {
+const _openMapActionSheet = (longitude: number, latitude: number, address: string) => {
     mapConfig.latitude = latitude
     mapConfig.longitude = longitude
-    _getMapRouterApp(latitude, longitude).then(res => {
+    mapConfig.address = address
+    _getMapRouterApp(longitude, latitude, address).then(res => {
         ActionSheet.showActionSheetWithOptions({
             options: [...res.mapItems?.map((item) => item.title), "取消"],
             cancelButtonIndex: res.mapItems.length
         }, (btnIndex) => {
             if (btnIndex < res.mapItems.length) {
-                if (!res.mapItems[btnIndex].url) {
-                    // 打开iOS自带地图
-                    _openMapIOS(latitude, longitude)
-                }
+                _openMapRouter(res.mapItems[btnIndex])
             }
             console.log("btnIndex:" + btnIndex)
         })
@@ -82,7 +81,7 @@ const _openMapActionSheet = (latitude: number, longitude: number) => {
 // 打开地图导航，配合_getMapRouterApp的返回mapItem一起使用
 const _openMapRouter = (item: IMapItem) => {
     if (!item.url) {
-        return _openMapIOS(mapConfig.latitude, mapConfig.longitude)
+        return _openMapIOS(mapConfig.longitude, mapConfig.latitude, mapConfig.address)
     }
     return Linking.openURL(item.url)
 }

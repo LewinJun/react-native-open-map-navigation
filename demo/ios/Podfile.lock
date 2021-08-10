@@ -252,7 +252,7 @@ PODS:
     - React-jsi (= 0.64.2)
     - React-perflogger (= 0.64.2)
   - React-jsinspector (0.64.2)
-  - react-native-open-map-navigation (1.0.0):
+  - react-native-open-map-navigation (1.0.2):
     - React
   - React-perflogger (0.64.2)
   - React-RCTActionSheet (0.64.2):
@@ -476,7 +476,7 @@ SPEC CHECKSUMS:
   React-jsi: 67747b9722f6dab2ffe15b011bcf6b3f2c3f1427
   React-jsiexecutor: 80c46bd381fd06e418e0d4f53672dc1d1945c4c3
   React-jsinspector: cc614ec18a9ca96fd275100c16d74d62ee11f0ae
-  react-native-open-map-navigation: bc7e61555055e935d4697597b7cd1e6e7887c07a
+  react-native-open-map-navigation: 70b309613841bc843e52a907dc8ed34c4b729521
   React-perflogger: 25373e382fed75ce768a443822f07098a15ab737
   React-RCTActionSheet: af7796ba49ffe4ca92e7277a5d992d37203f7da5
   React-RCTAnimation: 6a2e76ab50c6f25b428d81b76a5a45351c4d77aa
@@ -492,6 +492,6 @@ SPEC CHECKSUMS:
   Yoga: 575c581c63e0d35c9a83f4b46d01d63abc1100ac
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: d24bf39ea41186607a7a2d6f21b4ffb7c434338e
+PODFILE CHECKSUM: f8b874a1d454c5513beadc6e24f5ecccb24ec635
 
 COCOAPODS: 1.10.1
