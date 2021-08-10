@@ -20,7 +20,10 @@ import {
   View,
 } from 'react-native';
 
-import OpenMapNavigation from './native'
+// import OpenMapNavigation from './native'
+
+import OpenMapNavigation from 'react-native-open-map-navigation'
+
 
 import {
   Colors,

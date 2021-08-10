@@ -45,5 +45,8 @@
     "bugs": {
       "url": "https://github.com/LewinJun/react-native-open-map-navigation/issues"
     },
+    "publishConfig": {
+      "registry": "https://registry.npmjs.org"
+    },
     "homepage": "https://github.com/LewinJun/react-native-open-map-navigation#readme"
   }
