@@ -77,7 +77,17 @@ const App: () => Node = () => {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
           <TouchableOpacity style={styles.btn} onPress={() => {
-            OpenMapNavigation.openMapActionSheet("121.467237", "31.234532", "上海华盛大公馆")
+            OpenMapNavigation.openMapActionSheet("121.467237", "31.234532", "上海华盛大公馆", {
+              onFail: (e) => {
+                console.log(e)
+              },
+              onNoMapApp: () => {
+                console.log("没有相关地图")
+              },
+              onSelectItem: (item) => {
+                console.log("选择了：%o", item)
+              }
+            })
           }}>
             <Text style={{ color: 'white' }}>打开自带地图</Text>
           </TouchableOpacity>

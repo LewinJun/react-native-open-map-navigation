@@ -33,7 +33,17 @@
 import OpenMapNavigation from 'react-native-open-map-navigation'
 
 // 经纬度，actionSheet 选择，不用去管UI
-OpenMapNavigation.openMapActionSheet("121.467237", "31.234532", "上海华盛大公馆")
+OpenMapNavigation.openMapActionSheet("121.467237", "31.234532", "上海华盛大公馆", {
+              onFail: (e) => {
+                console.log(e)
+              },
+              onNoMapApp: () => {
+                console.log("没有相关地图")
+              },
+              onSelectItem: (item) => {
+                console.log("选择了：%o", item)
+              }
+            })
 // 只返回当前支持跳转的地图app url和title,  需要自行写UI列表
 OpenMapNavigation.getMapRouterApp("121.467237", "31.234532", "上海华盛大公馆")
 // getMapRouterApp 返回的item,打开地图

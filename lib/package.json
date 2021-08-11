@@ -1,6 +1,6 @@
 {
     "name": "react-native-open-map-navigation",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "打开App自带的地图导航",
     "main": "index.ts",
     "nativePackage": true,

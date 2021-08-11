@@ -8,6 +8,7 @@ import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 
 import java.util.ArrayList;
@@ -32,11 +33,11 @@ public class RNOpenMapNavigation extends ReactContextBaseJavaModule {
 
     //getMapRouterApp
     @ReactMethod
-    public void getMapRouterApp(String latitude, String longitude, String address,Promise promise) {
+    public void getMapRouterApp(String longitude, String latitude, String address,Promise promise) {
         try {
-            HashMap<String, Object> map = new HashMap<>();
-            map.put("code", 200);
-            map.put("mapItems",getInstalledMapAppWithEndLocation(latitude, longitude, address));
+            WritableMap map = Arguments.createMap();
+            map.putInt("code", 200);
+            map.putArray("mapItems",getInstalledMapAppWithEndLocation(longitude, latitude, address));
             promise.resolve(map);
         }catch (Exception e) {
             promise.reject(e);
@@ -52,8 +53,9 @@ public class RNOpenMapNavigation extends ReactContextBaseJavaModule {
         }
     }
 
-    public List<WritableMap> getInstalledMapAppWithEndLocation(String latitude, String longitude, String address) {
-        List<WritableMap> writableMapList = new ArrayList<>();
+    public WritableArray getInstalledMapAppWithEndLocation(String longitude, String latitude, String address) {
+//        List<WritableMap> writableMapList = new ArrayList<>();
+        WritableArray writableMapList = Arguments.createArray();
         String toName = address;
         if (TextUtils.isEmpty(toName)) {
             toName = "已选择的位置";
@@ -85,17 +87,17 @@ public class RNOpenMapNavigation extends ReactContextBaseJavaModule {
             WritableMap map = Arguments.createMap();
             map.putString("title", "高德地图");
             map.putString("url", stringBuffer.toString());
-            writableMapList.add(map);
+            writableMapList.pushMap(map);
         }
         if (isInstalled(this.getReactApplicationContext(), BAIDU_MAP)) {
             // 百度地图
             StringBuffer sb = new StringBuffer("baidumap://map/direction?mode=").append("driving");
-            sb.append("&origin={{我的位置}}");
+            sb.append("&origin=我的位置");
             sb.append("&destination=latlng:" + latitude + "," + longitude + "|name:"+toName+"&coord_type=gcj02");
             WritableMap baiduMap = Arguments.createMap();
             baiduMap.putString("title", "百度地图");
             baiduMap.putString("url", sb.toString());
-            writableMapList.add(baiduMap);
+            writableMapList.pushMap(baiduMap);
         }
         if (isInstalled(this.getReactApplicationContext(), TENXUN_MAP)) {
             // 腾讯地图
@@ -104,7 +106,7 @@ public class RNOpenMapNavigation extends ReactContextBaseJavaModule {
             WritableMap qqMap = Arguments.createMap();
             qqMap.putString("title", "腾讯地图");
             qqMap.putString("url", qq.toString());
-            writableMapList.add(qqMap);
+            writableMapList.pushMap(qqMap);
         }
         return writableMapList;
     }

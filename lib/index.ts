@@ -11,6 +11,12 @@ interface IMapItem {
     title: string;
 }
 
+interface IOpenActionSheet {
+    onSelectItem?: (item: IMapItem) => void;
+    onNoMapApp?: () => void;
+    onFail?: (e: any) => void;
+}
+
 // 扩展参数，暂时不用
 interface IMapRouter {
     latitude?: number;
@@ -60,11 +66,15 @@ const _openMapIOS = (longitude: number, latitude: number, address: string) => {
     })
 }
 
-const _openMapActionSheet = (longitude: number, latitude: number, address: string) => {
+const _openMapActionSheet = (longitude: number, latitude: number, address: string, callBack: IOpenActionSheet) => {
     mapConfig.latitude = latitude
     mapConfig.longitude = longitude
     mapConfig.address = address
     _getMapRouterApp(longitude, latitude, address).then(res => {
+        if (!res || !res.mapItems || res.mapItems?.length === 0) {
+            callBack && callBack?.onNoMapApp && callBack?.onNoMapApp()
+            return;
+        }
         ActionSheet.showActionSheetWithOptions({
             options: [...res.mapItems?.map((item) => item.title), "取消"],
             cancelButtonIndex: res.mapItems.length
@@ -72,9 +82,11 @@ const _openMapActionSheet = (longitude: number, latitude: number, address: strin
             if (btnIndex < res.mapItems.length) {
                 _openMapRouter(res.mapItems[btnIndex])
             }
-            console.log("btnIndex:" + btnIndex)
+            callBack && callBack?.onSelectItem && callBack?.onSelectItem(res.mapItems[btnIndex])
         })
 
+    }).catch(e => {
+        callBack && callBack?.onFail && callBack?.onFail(e)
     })
 }
 
